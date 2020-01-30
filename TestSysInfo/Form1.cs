@@ -23,11 +23,13 @@ namespace TestSysInfo
         {
             
             ManagementObjectSearcher searcher =
-                new ManagementObjectSearcher("SELECT * FROM " + comboBox1.Text);
+                new ManagementObjectSearcher("SELECT DNSHostName, Domain, Model, SystemType, TotalPhysicalMemory, UserName FROM " + comboBox1.Text);
 
             foreach (var mo in searcher.Get())
                 foreach (PropertyData pd in mo.Properties)
                     textBox1.Text += pd.Name + ":   " + pd.Value + Environment.NewLine ;
+
+            MessageBox.Show(new ManagementObjectSearcher("SELECT Caption FROM " + comboBox1.Text).Get().OfType<ManagementObject>().FirstOrDefault().Properties["Caption"].Name);
         }
     }
 }
