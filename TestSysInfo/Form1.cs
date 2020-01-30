@@ -28,7 +28,6 @@ namespace TestSysInfo
             foreach (var mo in searcher.Get())
                 foreach (PropertyData pd in mo.Properties)
                     textBox1.Text += pd.Name + ":   " + pd.Value + Environment.NewLine ;
-            searcher.Get().
         }
     }
 }
